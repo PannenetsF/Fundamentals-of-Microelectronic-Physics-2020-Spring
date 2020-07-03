@@ -1,0 +1,198 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+
+% Start Here
+\chapter{载流子输运过程}
+
+
+产生和复合过程是在能带图上的垂直向关系，输运则是在能带图的水平向的运动。输运的增强有两种主要的形式：漂移与扩散。
+
+\section{漂移}
+
+漂移电流的定义 
+
+\[J_n = q n v_{drift} = q n \mu_n \mathscr{E}\]
+
+其中 \(\mu_n\) 是迁移率。
+
+在外场的作用下，方程中的质量使用有效质量代替来等效内场
+
+\[\frac{d\left(m_{n}^{*} v\right)}{d t}=-q E -\frac{m_{n}^{*} v}{\tau_{n}}\]
+
+\[\begin{array}{l}
+    v(t)=-\frac{q \tau_{n}}{m_{n}^{*}} E \left[1-e^{-\frac{t}{\tau_{n}}}\right] \\
+    =-\frac{q \tau_{n}}{m_{n}^{*}} E \quad(t \rightarrow \infty, 1-2 ps ) \\
+    \equiv \mu_{n} E
+\end{array}\]
+
+\section{迁移率}
+
+迁移率与散射时间满足 
+
+\[\mu_n = \dfrac{q \tau_n}{m_n^*}\]
+
+在仅考虑电离的杂质时
+
+\[\tau_n \sim \dfrac{T^{3/2}}{N_D}\]
+
+在高温情况下，声子散射成为主导时
+
+\[\tau_n \sim T^{-3/2}\]
+
+对于不同种类的迁移率，总迁移率相当于并联。
+
+\section{高场效应}
+
+实际上就是速度饱和，之前的 \(v = \dfrac{q \tau_N}{m_N^*} \mathscr{E}\)，在 \(\mathscr{E}\) 超过某个阈值之后，速度不再继续变化。
+
+但是 GaAs 存在速度过冲现象，在提供的能量足够大的情况下，可以越到另一个能谷中。
+
+\section{扩散电流}
+
+\(D_P, D_N\)分别是空穴、电子的扩散系数，单位是 \(\text{cm}^2/\text{sec}\)
+
+\[\begin{array}{l}
+    \left. J _{ P }\right|_{\text {diff }}=-q D_{ P } \nabla p \\
+    J _{ N \mid \text { diff }}=q D_{ N } \nabla n
+\end{array}\]
+
+\section{霍尔效应}
+
+对于某个材料的电阻率\(\rho\)有
+
+\[\mathscr{E} = \rho J = \rho q (\mu_n n + \mu_p p) \mathscr{E}\]
+
+那么 
+
+\[\rho = \dfrac{1}{q (\mu_n p + \mu_p p)}\]
+
+那么对于 n 型半导体 \(\rho = \dfrac{1}{q \mu_n N_D}\) ，对于 p 型半导体 \(\rho = \dfrac{1}{q \mu_p N_A}\) 。
+
+Drude 模型
+
+\[-q E -q v \times B -\frac{m^{*} v}{\tau}=0\]
+
+解得
+
+\[\begin{array}{l}
+    \begin{aligned}
+        m^{*} v &=-q \tau \mathscr{E} -q \tau v \times B \\
+        &\approx-q \tau \mathscr{E} -q \tau\left(-\frac{q \tau \mathscr{E} }{m^{*}}\right) \times B \\
+        &=-q \tau \mathscr{E} +\frac{q^{2} \tau^{2}}{m^{*}} \mathscr{E} \times B \\
+        v&=-\frac{q \tau \mathscr{E} }{m^{*}}+\frac{q^{2} \tau^{2}}{m^{* 2}} \mathscr{E} \times B
+    \end{aligned}
+\end{array}\]
+
+在弱磁场下
+
+\[-q \mathscr{E} - \dfrac{m^* v}{\tau} \approx 0\]
+
+解得 
+
+\[v' = \dfrac{-q \tau \mathscr{E}}{m^*}\]
+
+对于一般的电流 
+
+\[\begin{aligned}
+    J _{n} &=-q n v \\
+    &=\frac{q^{2} n \tau}{m^{*}} \mathscr{E} -\frac{q^{2} n \tau}{m^{*}} \frac{q \tau}{m^{*}} \mathscr{E} \times B \\
+    &=\sigma_{0} \mathscr{E} -\sigma_{0} \mu \mathscr{E} \times B
+\end{aligned}\]
+
+
+解得霍尔电阻
+
+\[\left[\begin{array}{c}
+    J_{x} \\
+    J_{y}
+    \end{array}\right]=\left[\begin{array}{cc}
+    \sigma_{0} & -\sigma_{0} \mu B_{z} \\
+    \sigma_{0} \mu B_{z} & \sigma_{0}
+    \end{array}\right]\left[\begin{array}{c}
+    E_{x} \\
+    E_{y}
+\end{array}\right]\]
+
+对于平衡态，\(J_y = 0\) \(B_z \approx 0\)
+
+\[\left[\begin{array}{c}
+    J_{x} \\
+    0
+    \end{array}\right]=\left[\begin{array}{cc}
+    \sigma_{0} & 0 \\
+    \sigma_{0} \mu B_{z} & \sigma_{0}
+    \end{array}\right]\left[\begin{array}{c}
+    E_{x} \\
+    E_{y}
+\end{array}\right]\]
+
+解得
+
+\[R_H = \dfrac{E_y/B_z}{J_x} = - \dfrac{1}{q n}\]
+
+\(R_H\)通常在0.5 到 2 之间
+
+\section{连续性方程}
+
+共有五组
+
+\[\begin{array}{l}
+    \frac{\partial n}{\partial t}=\frac{1}{q} \nabla \bullet J _{N}-r_{N}+g_{N} \\
+    J _{N}=q n \mu_{N} E+q D_{N} \nabla n \\
+    \frac{\partial p}{\partial t}=-\frac{1}{q} \nabla \bullet J _{P}-r_{P}+g_{P} \\
+    J _{P}=q p \mu_{P} E-\left(q D_{P} \nabla p\right) \\
+    \nabla \bullet D=q\left(p-n+N_{D}^{+}-N_{A}^{-}\right)
+\end{array}\]
+
+其中扩散项中的扩散系数满足爱因斯坦关系，体现了散射在载流子的扩散用户漂移中均起了主导的作用
+
+\[\dfrac{D}{\mu} = \dfrac{k_B T}{q}\]
+
+\subsection{平衡态}
+
+满足
+
+\[J _{N}=q n \mu_{N} E+q D_{N} \dfrac{\dd{n}}{\dd{x}} \]
+
+解得 
+
+\[\frac{1}{n} \frac{\dd{n}}{\dd{x}} = - \frac{\mu_n \mathscr{E}}{D_N}\]
+
+那么在势场的不同位置有
+
+\[n_{2}=n_{1} e^{-\int_{0}^{L} \frac{\mu_{n}}{D_{n}} \mathscr{E}}{=n_{1} e^{\frac{\mu_{n} V}{D_{n}}}}\]
+
+为了满足爱因斯坦关系，必然有两点的费米能级相等
+
+\[\frac{n_{2}}{n_{1}}=\frac{N_{C} e^{-\left(E_{C 2}-E_{F}\right) / k T}}{N_{C} e^{-\left(E_{C 1}-E_{F}\right) / k T}}=e^{-\left(E_{C 2}-E_{C 1}\right) / k T}=e^{q V / k T}\]
+
+\subsection{载流子电流}
+
+\begin{equation*}
+    \begin{array}{l}
+        J _{N}=q n \mu_{N} E+q D_{N} \nabla n \\
+        J _{P}=q p \mu_{P} E-\left(q D_{P} \nabla p\right) 
+    \end{array}
+\end{equation*}
+
+第一项是漂移电流，第二项是扩散电流。
+
+\subsection{连续性方程}
+
+
+\[\begin{array}{l}
+    \frac{\partial n}{\partial t}=\frac{1}{q} \nabla \bullet J _{N}-r_{N}+g_{N} \\
+    \frac{\partial p}{\partial t}=-\frac{1}{q} \nabla \bullet J _{P}-r_{P}+g_{P} \\
+\end{array}\]
+
+第一项是漂移、扩散共同引起的载流子变化，第二项是产生-复合引起的，最后是其他效应。
+
+
+% End Here
+
+\ifx\mainclass\undefined
+\end{document}
+\fi 

@@ -1,0 +1,162 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\usepackage{array}
+\input{../needed.tex}
+\begin{document}
+\fi 
+
+% Start Here
+\chapter{态密度}
+
+\section{态密度关系的推导}
+
+在间距为\(\Delta k\)的两个能态之间存在的态的个数为\(2 \Delta k / \delta k\) 其中 \(\delta k = 2 \pi / a / N\) ，即为第一布里渊区的相邻态间距。
+那么单位能量间隔的态为 \(\delta k = 2 \pi / a / N/ \Delta E\)
+
+而能量满足\[E-E_0 = \bfrac{\hbar^2 k^2}{2 m^*}\]
+ 
+那么有\[\bfrac{\dd{k}}{\dd{E}} \sqrt{\bfrac{m^*}{2 \hbar^2 (E-E_0)}}\]
+
+对于含有 \(N\) 个原子的一维链来说 \(L = N a\) ，联立，那么单位能量单位长度的态密度为
+
+\[DOS = \bfrac{1}{\pi}\bfrac{\dd{k}}{\dd{E}} \sqrt{\bfrac{m^*}{2 \hbar^2 (E-E_0)}} \]
+
+\qfig{f1.png}{一维态密度}
+
+类似的对于三维体系，在 \(E\) 处的能量间隔中态的数目为 
+\[\bfrac{\Delta V}{\delta V} = \bfrac{4 \pi /3 [(k + \dd{k})^3 - k^3 ]}{(2 \pi / L)(2 \pi / W)(2 \pi / H)} = \bfrac{V}{2 \pi^2 k^2 \dd{k}}\]
+
+同一维情况的 \(E-k\)关系带入
+
+\[DOS = \bfrac{m^*}{2 \pi^2 \hbar^3} \sqrt{2 m* (E-E_0)}\]
+
+\section{常见材料的导带价带}
+
+关键在于求得等效质量\(m^*\)
+
+\[g_i(E) = \bfrac{m^*}{2 \pi^2 \hbar^3} \sqrt{2 m* (E-E_0)}, i = c\  \text{or}\  v\]
+
+其中有效质量为
+
+\[
+\bfrac{1}{m^*} = \bfrac{1}{\hbar^2} \bfrac{\dd{^2E}}{\dd{k^2}}  
+\]
+
+由于不同材料的能带形状不一样，如椭球型，需要求得其等效质量\(m^*_{eff}\)。
+
+GaAs 的导带为球形，各个方向的有效质量一致。
+
+Si 与 Ge 的导带形状为椭球形，满足：
+
+\[
+E - E_C = \bfrac{\hbar^2 k_1^2}{2 m_l ^*} +\bfrac{\hbar^2 k_2^2}{2 m_t ^*} + \bfrac{\hbar^2 k_1^2}{2 m_t ^*} 
+\]
+
+其中\(m_l^*\)是椭球的长轴等效质量，\(m_t^*\)是短轴的。
+
+可以归一化为关于\(k_i\)的椭球面方程，
+
+\[1 = \bfrac{k_1^2}{\alpha^2} + \bfrac{k_2^2}{\beta^2} + \bfrac{k_3^2}{\beta^2}\]
+
+将第一布里渊区的有效椭球面个数记为 \(N_{el}\) ，进而定义有效半径
+
+\[N_{el} \bfrac{4}{3} \pi \alpha\beta^2 = \bfrac{4}{3} \pi k_{eff}^3\]
+
+化简得到有效质量
+
+\[m_{eff}^* = N_{el}^{2/3}  (m_l^* m_t^{*2})^{1/3}\]
+
+对于 Ge \(N_{el} = 4\) ，Si \(N_{el} = 6\) 。
+
+对于价带，同样由不同的有效质量如重空穴与轻空穴分别对应 \(m^*_{hh} m^*_{lh}\)。
+
+
+
+
+
+\section{费米-狄拉克分布}
+
+费米能级为\(E_F\)
+
+\[f_0(E) = \bfrac{1}{1+e^{\beta (E- E_F)}}\]
+
+其中 \(\beta = 1 / (k_B T)\)
+
+\section{载流子分布}
+
+电子的单位体积个数(浓度)可以考虑成导带电子态密度以及电子占据情况下分布函数的加权
+
+\[n = \int_{E_c}^{E_{top}} g_c(E) f(E) dE\]
+
+空穴的单位体积个数(浓度)可以考虑成价带空穴态密度以及电子\textbf{不}占据情况下分布函数的加权
+
+\[p = \int_{E_bottom}^{E_{v}} g_v(E) (1 - f(E)) dE\]
+
+
+
+\section{玻尔兹曼分布}
+
+在导带或者价带能量与费米能级相差\(3 k_B T\) 及以上时， 费米-狄拉克分布可以弱化为玻尔兹曼分布，并且可以称为简并半导体。
+
+\[n = N_C  e^{-\beta(E_c - E_F)}\]
+
+
+\[p = N_V  e^{\beta (E_v - E_F)}\]
+
+
+
+其中，\(N_C\) 、 \(N_V\) 分别是导带价带的有效态密度。
+
+\begin{equation*}
+    \begin{aligned}
+        N_C = 2 \left(\bfrac{2 \pi m_n^* k_B T}{h^2}\right) ^{3/2} \\
+        N_V = 2 \left(\bfrac{2 \pi m_p^* k_B T}{h^2}\right) ^{3/2} 
+    \end{aligned}
+\end{equation*}
+
+\section{本征费米能级}
+
+由上一节知
+
+\[n p = N_C N_V e^{-\beta(E_c - E_v)} =N_C N_V e^{-\beta(E_g)} \]
+
+当\(n = p = n_i\) 时，定义 \(E_F = E_i\) 
+可以解出本征载流子浓度与费米能级
+
+\[n_i = \sqrt{N_C N_V} e^{-E_0/2k_B T}\]
+
+\[E_i = \dfrac{E_G}{2} + \dfrac{1}{2 \beta} \ln \dfrac{N_V}{N_C}\]
+
+并且存在关系
+
+\[\begin{array}{l}
+    n_{ i }=N_{ C } e^{\left(E_{ i }-E_{ c }\right) / k T} \\
+    n_{ i }=N_{ V } e^{\left(E_{ v }-E_{ i }\right) / k T}
+\end{array}\]
+
+\[\begin{array}{l} 
+    n = n _{ i } e^{\left(E_{ F }-E_{ i }\right) / k T} \\
+    p = n _{ i } e^{\left(E_{ i }- E _{ F }\right) / k T}
+\end{array}\]
+
+\section{能带图与能量}
+
+以一个电子的能量分布为例，空穴类似。
+
+\qfig{f2.png}{电子的能量分布}
+
+\qfig{f3.png}{电子与空穴的对比}
+
+可以得到势能满足 
+
+\[P.E = E_c - E_{ref} = -q V(x)\] 
+
+那么 \[V = - \dfrac{1}{q}(E_c - E_{ref})\]
+
+电场满足 \[\mathscr{E} = -\nabla V = \dfrac{1}{q}\dfrac{\dd{E_c}}{\dd{x}}   = \dfrac{1}{q}\dfrac{\dd{E_v}}{\dd{x}}\]
+
+% End Here
+
+\ifx\mainclass\undefined
+\end{document}
+\fi 

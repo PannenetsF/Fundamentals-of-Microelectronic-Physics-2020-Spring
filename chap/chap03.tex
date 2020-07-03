@@ -1,0 +1,299 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+
+% Start Here
+\chapter{产生与复合}
+
+\section{非平衡态}
+
+\subsection{基本概念}
+
+在开始之前首先对产生与复合下定义 
+
+\begin{definition}[产生与复合]
+    产生是指的电子与空穴产生的过程，复合是电子与空穴中和的过程。
+\end{definition}
+
+\textbf{带-带复合} ： 电子从导带跌落到价带和一个空穴复合，并且产生光子。
+
+\textbf{陷阱辅助复合 / R-G 中心复合 / 间接复合} ： 特定的杂质会在带隙间引入特定的陷阱能级 \(E_T\) ，捕获一个电子或一个空穴，之后另一种载流子被吸引产生复合，放出声子或者热量。
+
+\textbf{激发复合} ： 当一对电子与空穴被限制在一起就成为一种激子，形成激子所需的能量是小于带隙的，在形成后可以视为在导带下方或者价带上方的一个次能级，在低温下相当明显，并且是一种主要的发光机制。
+
+\textbf{Auger 复合} ： 这种复合和碰撞同时发生，高能的粒子和晶格碰撞逐渐传递能量给载流子发生复合。在高载流子浓度时起主导作用。
+
+\qfig{f7.png}{复合类型}
+
+产生完全是复合的逆过程，如碰撞电离是 Auger 复合的逆过程。
+
+\qfig{f8.png}{产生类型}
+
+\subsection{动量因素}
+
+上述的产生 - 复合过程一直在半导体内部进行，我们需要对不同情况下的主导行为进行研究。仅仅从能量的角度考虑可能成为主导的过程实际上可能发生率没有那么高，是因为动量因素同样对过程造成影响。
+
+直接禁带半导体：一些材料如 GaAs 的价带与导带的能谷是处于同一个波矢位置的，因此产生与复合的过程不会发生动量的变化，仅发生能量的转移（以光子的形式）。
+
+间接禁带半导体：而一些材料如 Ge 、 Si 的价带导带不在同一个位置，因此会产生动量的变化。
+
+光子（ photon ）没有质量，只携带很少的动量，但是能量相当大；声子（ phonon ）的动量比较大，其波矢可以和布里渊区相比，但是能量和带隙相比可忽略。
+
+局域化缺陷态为间接的输运过程提供了动量。
+
+\section{产生-复合分析}
+
+分析的最终目的是得到载流子产生或者消失的净速率 \(\pp{n}/\pp{t}\) 以及 \(\pp{p}/\pp{t}\)，在事实上起主导作用的陷阱辅助的间接复合，陷阱能级或称复合中心的性质也是 R-G 过程的重要影响因素。\(n_T\) 是捕获电子的复合中心浓度， \(p_T\) 是空的复合中心浓度， \(N_T\) 是总复合中心浓度，满足 \(N_T = n_T + p_T\) 。
+
+\subsection{载流子俘获}
+
+陷阱的俘获机制可以看做是基于碰撞过程的，对于载流子的热运动
+
+\[\dfrac{1}{2} m^* v_{th}^2 = \dfrac{3}{2} k T\] 
+
+那么，对于材料中以 \(A\) 为截面积的一段， \(n\) 个电子在 \(t\) 时间内扫过体积为 \(A v_{th} t\) ，其中的空陷阱的总面积是 \(A v_{th} t p_T \sigma_n\)，其中 \(\sigma_n\) 是对 n 型载流子的俘获面积，因此总的减少率为 
+
+\[\dfrac{\dd{n}}{\dd{t}} = - \dfrac{n}{t} \dfrac{A v_{th} t p_T \sigma_n}{A} = -c_n p_T n\]
+
+其中 \(c_n = \sigma_n v_{th}\) ，称为电子俘获系数。
+
+\subsection{SRH 理论}
+
+这个理论是人名命名的，没有特殊含义。
+
+R-G 过程共有四个子过程
+
+\begin{itemize}
+    \item 陷阱从导带捕获电子
+    \item 陷阱向导带发射电子
+    \item 陷阱从价带捕获空穴或向价带发射电子
+    \item 陷阱向价带发射空穴或从价带接受激发电子
+\end{itemize}
+
+接下来类似捕获系数，定义发射系数 \(e_n\) 。
+
+总体有 
+\[
+\dfrac{\pp{n}}{\pp{t}}\where{1,2} = - c_n n p_T + e_n n_T (1 - f_c)
+\]
+
+\[
+\dfrac{\pp{p}}{\pp{t}}\where{3,4} = - c_p p n_T + e_p p_T f_v
+\]
+
+细致平衡原则，在平衡态下，任一子过程都是平衡的。根据此原则计算以上公式，并且通过下标 0 表征平衡，得到
+
+\[e_n = c_n \dfrac{n_0 p_{T0}}{n_{T0}} = c_n n_1\]
+
+\[e_p = c_p \dfrac{p_0 n_{T0}}{p_{T0}} = c_p p_1\]
+
+其中有 
+
+\[\begin{aligned}
+    n_{1} & \equiv \dfrac{p_{ T 0} n_{0}}{n_{ T 0}} \\
+    p_{1} & \equiv \dfrac{n_{ T 0} p_{0}}{p_{ T 0}}
+\end{aligned}\]
+
+易得 
+
+\[n_1 p_1 = n_0 p_0 = n_i^2\]
+
+对于\(n_{T0}\) 、\(p_{T0}\) 有类似的
+
+\[n_{T 0}=N_{T}\left(1-f_{00}\right)=\dfrac{N_{T}}{1+g_{D} e^{\beta\left(E_{T}-E_{F}\right)}}\]
+
+那么
+
+\[n_1 = \dfrac{n_0 p_{T0}}{n_{T0}} = n_0 \dfrac{N_T - n_{T0}}{n_{T0}}\]
+
+\[n_1 = n_i e^{\beta (E_F - E_i)} g_D e^{\beta (E_T - E_F)} = n_i g_D e^{\beta (E_T - E_i)}\]
+
+\[p_1 = \dfrac{n_i^2}{n_1} = n_i g_D^{-1} e^{\beta (E_i - E_T)}\]
+
+\subsection{缺陷态的占据}
+
+定义缺陷能级的产生速率为 
+
+\[\begin{aligned}
+    \dfrac{\partial n_{T}}{\partial t} &=-\left.\dfrac{\partial n}{\partial t}\right|_{1,2}+\left.\dfrac{\partial p}{\partial t}\right|_{3,4} \\
+    &=c_{n} n p_{T}-e_{n} n_{T}-c_{p} p n_{T}+e_{p} p_{T} \\
+    &=c_{n}\left(n p_{T}-n_{T} n_{1}\right)-c_{p}\left(p n_{T}-p_{T} p_{1}\right)
+\end{aligned}\]
+
+稳态时，产生速率为 0 ，解得
+
+\[n_{ T }=\dfrac{c_{ n } N_{ T } n+c_{ p } N_{ T } p_{1}}{c_{ n }\left(n+n_{1}\right)+c_{ p }\left(p+p_{1}\right)}\]
+
+一般情况下，产生复合总速率为
+
+\[\begin{array}{l}
+    R=-\dfrac{d p}{d t}=c_{p}\left(p n_{T}-p_{T} p_{1}\right) \\
+    =\dfrac{n p-n_{i}^{2}}{\left(\dfrac{1}{c_{p} N_{T}}\right)\left(n+n_{1}\right)+\left(\dfrac{1}{c_{n} N_{T}}\right)\left(p+p_{1}\right)}
+\end{array}\]
+
+电子少数载流子寿命为 \[\tau_n = \dfrac{1}{c_p N_T}\]
+
+空穴少子寿命为 \[\tau_p = \dfrac{1}{c_n N_T}\]
+
+\[R=\dfrac{n p-n_{i}^{2}}{\tau_{p}\left(n+n_{1}\right)+\tau_{n}\left(p+p_{1}\right)}\]
+
+\subsection{掺杂稳态}
+
+规定 \(\Delta n = n - n_0\) ，\(\Delta p = p - p_0\)
+
+对于小注入，在 n 型半导体中 
+
+\[
+\Delta n, \Delta p \ll n_0 \approx n     
+\]
+
+可以得到 \(R = \dfrac{\Delta p}{\tau_p}\)
+
+p 型半导体中 
+
+
+\[
+\Delta n, \Delta p \ll p_0 \approx p
+\]
+
+可以得到 \(R = \dfrac{\Delta n}{\tau_n}\)
+
+对于大注入，在 n 型半导体中 \(\Delta p \gg n_0 \gg p_0\), \(R = \dfrac{\Delta p}{\tau_n + \tau_p}\)
+
+
+在 p 型半导体中 \(\Delta n \gg p_0 \gg n_0\), \(R = \dfrac{\Delta n}{\tau_n + \tau_p}\)
+% End Here
+
+在耗尽区中，\(n \ll n_1\) ，\(p \ll p_1\) 得到 \(R = \dfrac{-n_i^2}{\tau_p n_1 + \tau_n p_1}\)
+
+\subsection{直接带带复合} 
+
+公式满足
+
+\[R = B(np - n_i^2)\]
+
+在低掺杂下
+
+\[\begin{array}{l}
+    n_{0} \ll(\Delta n=\Delta p) \ll p_{0} \\
+    R=B\left[\left(n_{0}+\Delta n\right)\left(p_{0}+\Delta p\right)-n_{i}^{2}\right] \approx B p_{0} \times \Delta n
+\end{array}\]
+
+在耗尽区
+
+\[\begin{aligned}
+    &n, p \sim 0\\
+    &R=B\left(n p-n_{i}^{2}\right) \approx-B n_{i}^{2}
+\end{aligned}\]
+
+\subsection{Auger 复合}
+
+\[R=c_{n}\left(n^{2} p-n_{i}^{2} n\right)+c_{p}\left(n p^{2}-n_{i}^{2} p\right)\]
+
+\(c_{n}, c_{p} \sim 10^{-29} cm ^{6} / sec\)
+
+低掺杂下
+\(n_{0} \ll(\Delta n=\Delta p) \ll\left(p_{0}=N_{A}\right)\)
+
+\[R \approx c_{p} N_{A}^{2} \Delta n=\dfrac{\Delta n}{\tau_{\text {auger}}} \quad \tau_{\text {auger}}=\dfrac{1}{c_{p} N_{A}^{2}}\]
+
+\subsection{有效载流子寿命}
+
+
+
+速率满足
+
+\[
+    \begin{aligned}
+        R &=R_{S R H}+R_{\text {direct}}+R_{\text {Auger}} \\
+        &=\Delta n\left(\dfrac{1}{\tau_{\text {SRH}}}+\dfrac{1}{\tau_{\text {direct}}}+\dfrac{1}{\tau_{\text {Auger}}}\right) \\
+        &=\Delta n\left(c_{n} N_{T}+B N_{D}+c_{n, \text {auger}} N_{D}^{2}\right)
+    \end{aligned}\]
+
+有效寿命满足
+
+\[\tau_{e f f}=\left(c_{n} N_{T}+B N_{D}+c_{n, a u g e r} N_{D}^{2}\right)^{-1}\]
+
+\section{表面态}
+
+表面态的性质是单位面积，之前考虑的是单位体积。在带隙的不同能级中均存在对应的表面态。
+
+\(r_{Ns}, r_{Ps}\) 单位面积的载流子产生净速率。
+
+\(n_{Ts}, p_{Ts}\) 某能级的单位面积载流子数。
+
+\(N_{Ts} = n_{Ts} + p_{Ts}\)
+
+\(n_s, p_s\) 表面单位体积载流子浓度
+
+\(e_{ns}, e_{ps}\) 发射率 \(sec^-1\)
+
+\(c_{ns}, c_{ps}\) 捕获率 \(\text{cm}^3 sec^{-1}\)
+
+对于 \(E_V\) 到 \(E_C\) 积分
+
+\[d R_{ s }=\dfrac{n_{ s } p_{ s }-n_{ i }^{2}}{\left(n_{ s }+n_{1 s }\right) / c_{ ps }+\left(p_{ s }+p_{1 s }\right) / c_{ ns }} D_{ IT }(E) d E\]
+
+\subsection{少数载流子}
+
+\[\begin{aligned}
+    R(E)=& \dfrac{\left[\left(n_{s 0}+\Delta n_{s 0}\right)\left(p_{s 0}+\Delta p_{s 0}\right)-n_{i}^{2}\right] D_{I T}(E) d E}{\dfrac{1}{c_{p s}}\left(n_{s 0}+\Delta n_{s 0}+n_{1 s}\right)+\dfrac{1}{c_{n s}}\left(p_{s 0}+\Delta p_{s 0}+p_{1 s}\right)} \\
+    =& \dfrac{n_{s 0} \Delta p_{s 0} D_{I T}(E) d E}{n_{s 0}\left[\dfrac{1}{c_{p s}}+\dfrac{n_{1 s}}{c_{p s} n_{s 0}}+\dfrac{p_{1 s}}{c_{n s} n_{s 0}}\right]} \\
+    =& \dfrac{c_{p s} \Delta p_{s 0} D_{I T}(E) d E}{\left[1+\dfrac{n_{1 s}}{n_{s 0}}+\dfrac{c_{p s}}{c_{n s}} \dfrac{p_{1 s}}{n_{s 0}}\right]}
+\end{aligned}\]
+
+对于分母 
+
+\[\begin{aligned}
+    D &=1+\dfrac{n_{1 s}}{n_{s 0}}+\dfrac{c_{p s}}{c_{n s}} \dfrac{p_{1 s}}{n_{s 0}}=1+\dfrac{n_{1 s}}{N_{D}}+\dfrac{c_{p s}}{c_{n s}} \dfrac{p_{1 s}}{N_{D}} \\
+    &=1+\dfrac{n_{i} e^{\left(E-E_{i}\right) \beta}}{n_{i} e^{\left(E_{F}-E_{i}\right) \beta}}+\dfrac{c_{p s}}{c_{n s}} \dfrac{n_{i} e^{-\left(E-E_{i}\right) \beta}}{n_{i} e^{\left(E_{F}-E_{i}\right) \beta}} \\
+    &=1+e^{\left(E-E_{F}\right) \beta}+\dfrac{c_{p s}}{c_{n s}} e^{\left(E_{F}-E\right) \beta} \\
+    &=1+e^{x}+a e^{-x}\\
+    &\text{WHERE}\quad x \equiv \beta\left(E-E_{F}\right)\\
+    &=1+\dfrac{n_{i} e^{\left(E-E_{i}\right) \beta}}{N_{D}}+\dfrac{c_{p s}}{c_{n s}} \dfrac{n_{i} e^{-\left(E-E_{i}\right) \beta}}{N_{D}} \\
+    &=1+e^{\left(E-E_{F}\right) \beta}+\dfrac{c_{p s}}{c_{n s}} e^{\left(E_{F}-E\right) \beta}
+\end{aligned}\]
+
+\[D \approx\left[\begin{array}{ccc}
+    1 & \text { for } & E_{F} \leq E \leq E_{F}^{\prime} \\
+    \infty & & \text { otherwise }
+\end{array}\right.\]
+
+\qfig{f9.png}{\(D\) 与能量的关系}
+
+\(E_F'\) 满足
+
+\[\dfrac{n_{ i }}{N_{ D }} \dfrac{c_{ ps }}{c_{ ns }} e^{\left(E_{ i }-E_F\right) / k T}=1\]
+
+因此，返回到少子的复合中
+
+\[\begin{array}{l}
+    \begin{aligned}
+        
+        R&=\int_{E_{V}}^{E_{C}} R(E)=\int_{E_{V}}^{E_{C}} \dfrac{c_{p s} \Delta p_{s 0} D_{I T}(E) d E}{\Gamma_{h_{s 0}}+\dfrac{c_{p s}}{c_{n s}} \dfrac{p_{1 s}}{n_{s 0}}} \\
+        &\approx \int_{E_{F}}^{E_{F}} c_{p s} \Delta p_{s 0} D(E) d E
+    \end{aligned}
+\end{array}\]
+
+在耗尽区的复合
+
+    \begin{equation*}
+        \begin{aligned}
+            R(E)=& \dfrac{\left(n_{s} p_{s}-n_{i}^{2}\right) D_{I T}(E) d E}{\dfrac{1}{c_{p s}}\left(n_{s}+n_{1 s}\right)+\dfrac{1}{c_{n s}}\left(p_{s}+p_{1 s}\right)} \\
+            =&-\dfrac{n_{i}}{\dfrac{n_{i} e^{\left(E-E_{i}\right) \beta}}{c_{p s}}+\dfrac{n_{i} e^{-\left(E-E_{i}\right) \beta}}{c_{n s}} n_{i} D_{I T}(E) d E} \\
+            =&-c_{n s} D_{I T} n_{i} \dfrac{e^{\left(E-E_{i}\right) \beta} d E}{\dfrac{C_{n s}}{c_{p s}} e^{2\left(E-E_{i}\right) \beta}+1}\\
+            =&-c_{n s} D_{I T} n_{i} \int_{-\infty}^{+\infty} \dfrac{e^{\left(E-E_{i}\right) \beta} d E}{\dfrac{c_{n s}}{c_{p s}} e^{2\left(E-E_{i}\right) \beta}+1} \\
+            =&-c_{n s} D_{I T} n_{i} \phi \sqrt{\dfrac{c_{p s}}{c_{n s}}+\int_{0}^{+\infty} \dfrac{d x}{x^{2}+1}} \\
+            =&-\sqrt{c_{n s} c_{p s}} D_{I T} n_{i} \beta \dfrac{\pi}{2} \\
+        \end{aligned}
+    \end{equation*}
+
+\subsection{为什么施主和受主不能作为复合中心}
+
+此时 \(D = \infty\)， \(\dd{R} = 0\)
+
+\ifx\mainclass\undefined
+\end{document}
+\fi 

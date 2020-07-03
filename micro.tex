@@ -1,0 +1,57 @@
+\documentclass[cn,11pt,chinese,black,simple]{elegantbook}
+
+\def\mainclass{main}
+
+\title{微电子物理基础}
+% \subtitle{数字设计初步}
+
+\author{Pannenets.F}
+% \institute{微电子学院}
+\date{\today}
+% \version{4}
+\bioinfo{分类}{笔记}
+
+\extrainfo{Je reviendrai et je serai des millions. —— <<Spartacus>>}
+\setcounter{tocdepth}{3}
+
+\lstset{
+  mathescape = false}
+% \logo{logo-blue.png}
+\cover{cover.jpg}
+
+\input{needed.tex}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+
+\chapter*{特别声明}
+\markboth{Introduction}{前言}
+
+本复习手册记录了\textbf{微电子物理基础 2020 春}的部分公式以及公式中变量的解释，为理解变量较为\sout{脑瘫}繁杂的公式们。
+
+由于复习太过紧张（一天肝一科），公式完全没有标号，在一定程度上影响了复习的效率，下学期做笔记一定上课就做，一定公式、插图、表格全都有标号！一定！（咕咕咕）
+
+\vskip 1.5cm
+
+
+\begin{flushright}
+Pannenets F\\
+\today
+\end{flushright}
+
+\tableofcontents
+%\listofchanges
+
+\mainmatter
+
+\input{chap/chap01.tex}
+
+\input{chap/chap02.tex}
+
+\input{chap/chap03.tex}
+
+\input{chap/chap04.tex}
+
+\end{document}

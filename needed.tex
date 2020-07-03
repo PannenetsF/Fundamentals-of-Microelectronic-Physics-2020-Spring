@@ -1,0 +1,30 @@
+
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+\newcommand{\bfrac}[2]{\displaystyle\frac{#1}{#2}}
+
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+% 示例
+
+% 微分号
+\newcommand{\dd}[1]{\mathrm{d}#1}
+\newcommand{\pp}[1]{\partial{}#1}
+\newcommand{\where}[1]{\Big|_{#1}}
+
+% FT
+\newcommand{\ft}[1]{\mathscr{F}[#1]}
+\newcommand{\fta}{\xrightarrow{\mathscr{F}}}
+
+% 简易图片
+\newcommand{\qfig}[2]{\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{#1}
+    \caption{#2}
+  \end{figure}}
+
+% 表格
+\renewcommand\arraystretch{1.5}

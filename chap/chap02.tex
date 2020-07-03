@@ -1,0 +1,150 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\usepackage{array}
+
+\input{../needed.tex}
+\begin{document}
+\fi 
+
+% Start Here
+
+\chapter{掺杂}
+
+\section{基础知识}
+
+施主原子 (Donor) ：常见 \Rmnum{5} 族元素，掺杂后产生 n 型半导体
+
+受主原子 (Acceptor) : 常见 \Rmnum{3} 族元素，掺杂后产生 p 型半导体
+
+掺杂会使得禁带附近出现能级，使得禁带宽度变窄。
+
+\qfig{f4.png}{掺杂引起的能级变化}
+
+\section{施主能级与受主能级的统计分布}
+
+在施主能级上为空的概率，也就是施主的电子变成载流子的概率， \[\dfrac{N_D^+}{N_D} = 1 - f(E_D) =\dfrac{1}{1 + g_D e^{(E_F - E_D)/k_B T}}\]
+
+
+在受主能级上占据的概率，也就是受主的空穴变成载流子的概率 \[\dfrac{N_A^-}{N_A} = f(E_A) = \dfrac{1}{1 + g_A e^{(E_A - E_F)/k_B T}}\]
+
+
+其中\(g_D, g_A\)是能级的简并度，通常分别取\(2,4\)。可以将其转换为 \(e^{\epsilon / k_B T}\) 的形式，使得整体保持与之前费米狄拉克分布形式的一致，修正后的能级称为等效能级。
+
+\begin{equation*}
+    \begin{aligned}
+        E_D' = E_D - \epsilon \\
+        E_A' = E_A + \epsilon
+    \end{aligned}
+\end{equation*}
+
+
+其中\(N_D\)是总的掺杂施主浓度，\(N_D^+\) 是电离的施主浓度。\(N_A\)是总的掺杂受主浓度，\(N_A^-\) 是电离的受主浓度。
+
+% 各个物理量的意义
+
+电荷密度为 
+\[\rho = q (p - n + N_D^+ - N_A^-)\]
+
+电中性条件 \[\int_{V} \rho \dd{V} = 0 \]
+
+\begin{equation}\label{eq:ch2:1}
+    \begin{aligned}
+        N_Ve^{-(E_F-E_V)/k_B T} &- N_A e^{-(E_C - E_F)/k_B T} \\
+        & + \dfrac{N_D}{1 + 2 e^{(E_F - E_D)/k_B T}} - \dfrac{N_A}{1 + 4 e^{E_A - E_F}/k_B T } = 0
+    \end{aligned}
+\end{equation}
+
+从掺杂的角度认识本征载流子浓度即为：电离的掺杂离子浓度均为 \(0\) ，此时 \(n = p = n_i\) 。
+
+
+
+\section{载流子浓度与温度的关系}
+
+本节以及之后几节都以施主掺杂为例，受主掺杂类似。
+
+在温度接近 \(0 K\) 时，几乎不会出现带 - 带之间的跃迁，大部分载流子由电离提供。
+在室温情况下，掺杂离子几乎完全电离，但是跃迁仍然较少，载流子浓度呈现为稳定的状态。再升高温度，材料本身的载流子被激发出来，最终超过掺杂原子电离出的载流子成为主要贡献者。
+
+\qfig{f6.png}{温度与跃迁}
+
+\qfig{f5.png}{载流子浓度与温度关系}
+
+\section{平衡态的载流子浓度}
+
+~\ref{eq:ch2:1} 中，\(N_A^- = 0\) ，即
+
+\[p - n + N^+_D = 0\]
+
+对于 \(N_D^+ \) 
+
+\[n = N_C e^{-\beta (E_C - E_F)}\]
+
+那么
+
+\[e^{\beta E_F} = \dfrac{n}{N_C}e^{\beta E_C}\]
+
+\[N_D^+ =\dfrac{N_D}{1 + 2 e^{(E_F - E_D)/k_B T}} = \dfrac{N_D}{1 + 2 \left[\dfrac{n}{N_C}e^{\beta (E_C - E_D} \right]} \equiv \dfrac{N_D}{1 + \dfrac{n}{N_{\xi}}}\] 
+
+其中 \(N_\xi \) 是对特定温度可以计算的常数
+
+\[N_\xi \equiv (N_C / g_D) e^{-(E_c - E_D)/k_B T}\]
+
+同时 \(n p = n)i^2\) 式~\ref{eq:ch2:1} 化简为
+
+\[\dfrac{n_i^2}{n} - n + \dfrac{N_D}{\dfrac{n}{N_\xi} + 1} = 0\]
+
+按照上一节讨论的温度分类进行讨论
+
+\begin{enumerate}
+    \item 低温：\(N_D \gg n_i\) \[- n + \dfrac{N_D}{\dfrac{n}{N_\xi} + 1} = 0\]
+    \[n = \dfrac{N_\xi}{2} \left[\left(1 + \dfrac{4N_D}{N_\xi}\right)^{1/2} -1\right]\]
+    \item 室温：上式仍成立 但是此时 \(N_\xi \gg N_D\) ，泰勒展开近似得到
+    \[n = N_D\]
+    \item 高温：此时完全电离 \(N_D^+ = N_D\) 而且 \(n_i\) 已经无法忽视，\(N_\xi\) 相当大。
+    \[\dfrac{n_i^2}{n} - n + N_D = 0\]
+    \[n = \dfrac{N_D}{2} + \left[\dfrac{N_D^2}{4} + n_i^2\right]^{1/2}\]
+    满足
+    \begin{equation*}
+        n \approx \left\{ 
+        \begin{aligned}
+            N_D, & N_D \gg n_i \\
+            n_i, & n_i \gg N_D
+        \end{aligned}\right.
+    \end{equation*}
+\end{enumerate}
+
+\section{费米能级的确定}
+
+在本征状态下，即无掺杂时，\(E_F = E_i\)满足
+
+\[
+\begin{aligned}
+    n &= p \\
+    N_C e^{-\beta (E_c - E_F)} &= N_V  e^{+ \beta (E_v - E_F)}
+\end{aligned}    
+\]
+
+解得 
+
+\[
+E_F = E_i = \dfrac{E_G}{2} + \dfrac{1}{2\beta} \ln \dfrac{N_V}{N_C}
+\]
+
+这里 \(E_G = \dfrac{E_c + E_v}{2}\)
+
+在室温掺杂下 \(n = N_D\) ，那么有
+
+\[n=N_{C} e^{-\beta\left(E_{c}-E_{F}\right)} \Rightarrow E_{F}=E_{C}+\dfrac{1}{\beta} \ln \left(\dfrac{n}{N_{C}}\right)\]
+
+在非本征状态下，由上一章的公式 
+
+\[\begin{array}{l}
+    E_{ F }-E_{ i }=k T \ln \left(N_{ D } / n_{ i }\right) \\
+    E_{ i }-E_{ F }=k T \ln \left(N_{ A } / n_{ i }\right)
+\end{array}\]
+
+% End Here
+
+\ifx\mainclass\undefined
+\end{document}
+\fi 
